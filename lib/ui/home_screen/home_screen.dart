@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
       onModelReady: (model) async {
         this.model = model;
         model.getPayment();
+        model.postPayment();
       },
     );
   }

@@ -23,9 +23,10 @@ class HomeScreenViewModel extends BaseModel {
 
   postPayment() async {
     state = ViewState.Busy;
+
     PaymentValueRequestModel paymentValueRequestModel = PaymentValueRequestModel(
-      description: 'description',
       amount: 100,
+      description: 'description',
       currency: "INR",
       callbackMethod: "callbackMethod",
     );

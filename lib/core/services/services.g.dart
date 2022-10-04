@@ -49,17 +49,25 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<PaymentValueRequestModel> paymentValue(header) async {
+  Future<PaymentValueResponsModel> paymentValue(
+    header,
+    paymentValueRequestModel,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': header};
+    final _headers = <String, dynamic>{
+      r'Authorization': header,
+      r'Content-Type': 'application/json',
+    };
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
+    _data.addAll(paymentValueRequestModel.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<PaymentValueRequestModel>(Options(
+        _setStreamType<PaymentValueResponsModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/json',
     )
             .compose(
               _dio.options,
@@ -68,7 +76,7 @@ class _ApiClient implements ApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = PaymentValueRequestModel.fromJson(_result.data!);
+    final value = PaymentValueResponsModel.fromJson(_result.data!);
     return value;
   }
 

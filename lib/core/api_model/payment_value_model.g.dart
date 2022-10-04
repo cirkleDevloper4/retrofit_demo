@@ -16,9 +16,10 @@ PaymentValueRequestModel _$PaymentValueRequestModelFromJson(
       notify: json['notify'] == null
           ? null
           : NotifyData.fromJson(json['notify'] as Map<String, dynamic>),
-    )..customer = json['customer'] == null
-        ? null
-        : CustomerData.fromJson(json['customer'] as Map<String, dynamic>);
+      customer: json['customer'] == null
+          ? null
+          : CustomerData.fromJson(json['customer'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$PaymentValueRequestModelToJson(
         PaymentValueRequestModel instance) =>
