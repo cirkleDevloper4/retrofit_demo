@@ -28,7 +28,10 @@ class _HomePageState extends State<HomePage> {
                     itemCount: model.getPaymentStatus.paymentLinks!.length,
                     itemBuilder: (context, index) {
                       return Center(
-                        child: Text(model.getPaymentStatus.paymentLinks![index].customer!.name.toString()),
+                        child: Text(
+                          model.getPaymentStatus.paymentLinks![index].customer!.name.toString(),
+                          style: const TextStyle(fontSize: 20),
+                        ),
                       );
                     },
                   ),
