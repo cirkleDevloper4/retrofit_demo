@@ -3,6 +3,7 @@ import 'package:demo/core/utils/url.dart';
 import 'package:retrofit/http.dart';
 
 import '../api_model/payment_status_model.dart';
+import '../api_model/payment_value_model.dart';
 
 part 'services.g.dart';
 
@@ -15,5 +16,15 @@ abstract class ApiClient {
     "Authorization": "application/json",
     "Content-Type": "application/json",
   })
-  Future<GetPaymentStatus> getUsers(@Header("Authorization") String header);
+  Future<GetPaymentStatus> getPaymentStatus(@Header("Authorization") String header);
+
+
+  //post
+  @POST("payment_links")
+  @Headers(<String, dynamic>{
+    "Authorization": "application/json",
+    "Content-Type": "application/json",
+  })
+  Future<PaymentValueResponsModel> paymentValue(
+      @Header("Authorization") String header, @Body() PaymentValueRequestModel paymentValueRequestModel);
 }
