@@ -23,6 +23,9 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
+                const Divider(color: Colors.black, endIndent: 50, indent: 50),
+                const Text("GET DATA", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                const Divider(color: Colors.black, endIndent: 50, indent: 50),
                 model.getPaymentStatus.paymentLinks == null
                     ? const Center(
                         child: CircularProgressIndicator(),
@@ -33,13 +36,18 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Text(
-                              model.getPaymentStatus.paymentLinks![index].customer!.name.toString(),
-                              style: const TextStyle(fontSize: 20),
+                            child: Center(
+                              child: Text(
+                                model.getPaymentStatus.paymentLinks![index].customer!.name.toString(),
+                                style: const TextStyle(fontSize: 20),
+                              ),
                             ),
                           );
                         },
                       ),
+                const Divider(color: Colors.black, endIndent: 50, indent: 50),
+                const Text("POST DATA", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                const Divider(color: Colors.black, endIndent: 50, indent: 50),
                 model.paymentValueResponsModel.id == null
                     ? const Center(
                         child: CircularProgressIndicator(),
