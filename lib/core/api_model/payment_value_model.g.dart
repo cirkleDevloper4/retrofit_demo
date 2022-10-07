@@ -18,7 +18,8 @@ PaymentValueRequestModel _$PaymentValueRequestModelFromJson(
           : NotifyData.fromJson(json['notify'] as Map<String, dynamic>),
       customer: json['customer'] == null
           ? null
-          : CustomerData.fromJson(json['customer'] as Map<String, dynamic>),
+          : CustomerDataResponse.fromJson(
+              json['customer'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PaymentValueRequestModelToJson(
@@ -43,13 +44,16 @@ Map<String, dynamic> _$NotifyDataToJson(NotifyData instance) =>
       'sms': instance.sms,
     };
 
-CustomerData _$CustomerDataFromJson(Map<String, dynamic> json) => CustomerData(
+CustomerDataResponse _$CustomerDataResponseFromJson(
+        Map<String, dynamic> json) =>
+    CustomerDataResponse(
       contact: json['contact'] as String?,
       email: json['email'] as String?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$CustomerDataToJson(CustomerData instance) =>
+Map<String, dynamic> _$CustomerDataResponseToJson(
+        CustomerDataResponse instance) =>
     <String, dynamic>{
       'contact': instance.contact,
       'email': instance.email,
@@ -60,10 +64,14 @@ PaymentValueResponsModel _$PaymentValueResponsModelFromJson(
         Map<String, dynamic> json) =>
     PaymentValueResponsModel(
       id: json['id'] as String?,
+      shortUrl: json['short_url'] as String?,
+      status: json['status'] as String?,
     );
 
 Map<String, dynamic> _$PaymentValueResponsModelToJson(
         PaymentValueResponsModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'short_url': instance.shortUrl,
+      'status': instance.status,
     };

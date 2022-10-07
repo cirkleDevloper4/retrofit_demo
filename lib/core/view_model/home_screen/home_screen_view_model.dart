@@ -23,15 +23,17 @@ class HomeScreenViewModel extends BaseModel {
 
   postPayment() async {
     state = ViewState.Busy;
-
     PaymentValueRequestModel paymentValueRequestModel = PaymentValueRequestModel(
-      amount: 100,
-      description: 'description',
-      currency: "INR",
-      callbackMethod: "callbackMethod",
-    );
+        amount: 100,
+        description: 'description',
+        currency: "INR",
+        callbackMethod: "get",
+        notify: NotifyData(email: false, sms: false),
+        customer: CustomerDataResponse(name: 'name', email: 'rutvik12@gmail.com', contact: '+918866187223'));
+
     paymentValueResponsModel = await apiRepository.paymentValue(
         "Basic cnpwX3Rlc3RfUWlaWlZpNkNMNWVHTjE6S1oyelVWRzFBQ0xKOThwekp5V0tKb3dl", paymentValueRequestModel);
+    print("Respons::- $paymentValueResponsModel");
     state = ViewState.Idle;
     updateUI();
   }

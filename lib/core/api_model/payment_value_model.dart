@@ -15,9 +15,10 @@ class PaymentValueRequestModel {
   @JsonKey(name: 'notify')
   NotifyData? notify;
   @JsonKey(name: 'customer')
-  CustomerData? customer;
+  CustomerDataResponse? customer;
 
-  PaymentValueRequestModel({this.amount, this.currency, this.description, this.callbackMethod, this.notify, this.customer});
+  PaymentValueRequestModel(
+      {this.amount, this.currency, this.description, this.callbackMethod, this.notify, this.customer});
 
   factory PaymentValueRequestModel.fromJson(Map<String, dynamic> json) => _$PaymentValueRequestModelFromJson(json);
 
@@ -39,7 +40,7 @@ class NotifyData {
 }
 
 @JsonSerializable()
-class CustomerData {
+class CustomerDataResponse {
   @JsonKey(name: 'contact')
   String? contact;
   @JsonKey(name: 'email')
@@ -47,20 +48,23 @@ class CustomerData {
   @JsonKey(name: 'name')
   String? name;
 
-  CustomerData({this.contact, this.email, this.name});
+  CustomerDataResponse({this.contact, this.email, this.name});
 
-  factory CustomerData.fromJson(Map<String, dynamic> json) => _$CustomerDataFromJson(json);
+  factory CustomerDataResponse.fromJson(Map<String, dynamic> json) => _$CustomerDataResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CustomerDataToJson(this);
+  Map<String, dynamic> toJson() => _$CustomerDataResponseToJson(this);
 }
 
-
 @JsonSerializable()
-class PaymentValueResponsModel{
+class PaymentValueResponsModel {
   @JsonKey(name: 'id')
   String? id;
+  @JsonKey(name: 'short_url')
+  String? shortUrl;
+  @JsonKey(name: 'status')
+  String? status;
 
-  PaymentValueResponsModel({this.id});
+  PaymentValueResponsModel({this.id, this.shortUrl, this.status});
 
   factory PaymentValueResponsModel.fromJson(Map<String, dynamic> json) => _$PaymentValueResponsModelFromJson(json);
 
