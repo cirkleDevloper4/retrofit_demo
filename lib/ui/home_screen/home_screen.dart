@@ -40,14 +40,17 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                       ),
-                /*model.paymentValueResponsModel.id == null
+                model.paymentValueResponsModel.id == null
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )
-                    :*/
-                Text(model.paymentValueResponsModel.id.toString()),
-                Text(model.paymentValueResponsModel.shortUrl.toString()),
-                Text(model.paymentValueResponsModel.status.toString()),
+                    : Column(
+                        children: [
+                          Text(model.paymentValueResponsModel.id.toString()),
+                          Text(model.paymentValueResponsModel.shortUrl.toString()),
+                          Text(model.paymentValueResponsModel.status.toString()),
+                        ],
+                      )
               ],
             ),
           ),
